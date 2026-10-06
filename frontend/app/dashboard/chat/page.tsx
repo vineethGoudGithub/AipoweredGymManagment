@@ -138,9 +138,16 @@ export default function ChatPage() {
           + "2. Bench Press: Pin shoulder blades into the bench like you're squeezing a pencil. Keep your elbows roughly 45 degrees to protect the rotator cuff.\n"
           + "3. Deadlift: 'Wedge' yourself into the bar, remove barbell slack, pull chest up, and push the floor away instead of pulling back."
         followUps = ["How to fix lower back fatigue?", "Best assistance exercises"]
+      } else if (q.includes("deload") || q.includes("recovery") || q.includes("soreness") || q.includes("fatigue")) {
+        reply = `ApexFit CNS Recovery & Deload Blueprint:\n\n`
+          + "• Deload Timing: Every 6-8 weeks of intense mesocycle training.\n"
+          + "• Volume Reduction: Cut total weekly sets by 40-50% while maintaining moderate intensity (RPE 6-7).\n"
+          + "• Intensity Protocol: Work with 60-70% of 1RM, focus on pure movement fluidity and tempo.\n"
+          + "• Sleep & Nutrition: Maintain caloric surplus or maintenance; increase sleep to 8-9 hours for connective tissue repair."
+        followUps = ["When should I take a full rest week?", "Contrast shower and sauna recovery tips"]
       } else {
         reply = `Solid query, ${userName}! As your ApexFit AI coach, I recommend structuring your training with disciplined progressive overload, staying consistent with your daily protein targets, and optimizing sleep (7-8 hours). What specific workout or nutrition metric would you like to review?`
-        followUps = ["Create a 4-day Hypertrophy split", "Calculate cutting macros", "Form cues for Barbell Squat"]
+        followUps = ["Create a 4-day Hypertrophy split", "Calculate cutting macros", "Form cues for Barbell Squat", "Deload recovery protocol"]
       }
 
       const aiMsg: Message = {
