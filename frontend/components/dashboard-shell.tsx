@@ -188,22 +188,28 @@ export function DashboardShell({ children, activeTab = "Gym Finder" }: { childre
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
-                placeholder="Search..."
-                className="w-56 rounded-sm border border-border bg-input py-2 pl-10 pr-4 text-sm text-foreground outline-none transition-all placeholder:text-gym-text-dim focus:border-primary/50 focus:w-72"
+                placeholder="Search gyms, exercises, routines..."
+                className="w-64 rounded-sm border border-border bg-input py-2 pl-10 pr-12 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary/50 focus:w-80"
               />
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-border/80 bg-secondary px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground">
+                ⌘K
+              </span>
             </div>
 
             {/* Notifications */}
-            <button className="relative flex h-9 w-9 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+            <button className="relative flex h-9 w-9 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground" title="Notifications">
               <Bell className="h-4 w-4" />
               <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-primary" />
             </button>
 
-            {/* Check-in button */}
-            <button className="hidden items-center gap-2 rounded-sm border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all duration-300 hover:bg-primary/20 hover:shadow-[0_0_20px_oklch(0.65_0.25_25/0.2)] sm:flex">
+            {/* Quick Check-in Link */}
+            <Link
+              href="/dashboard"
+              className="hidden items-center gap-2 rounded-sm border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all duration-300 hover:bg-primary/20 hover:shadow-[0_0_20px_oklch(0.65_0.25_25/0.2)] sm:flex"
+            >
               <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-              Check In
-            </button>
+              Quick Pass
+            </Link>
           </div>
         </header>
 
