@@ -47,7 +47,7 @@ export function GymCommunityView({ gym, onClose }: GymCommunityViewProps) {
     const fetchMembers = async () => {
         setLoading(true)
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/gyms/${gym.id}/members`)
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/gyms/${gym.id}/members`)
             if (!response.ok) throw new Error('Failed to fetch members')
             const data = await response.json()
             setMembers(data)
@@ -70,7 +70,7 @@ export function GymCommunityView({ gym, onClose }: GymCommunityViewProps) {
 
     const handleJoin = async (newMember: Omit<Member, 'id'>) => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/gyms/${gym.id}/members`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/gyms/${gym.id}/members`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -91,12 +91,12 @@ export function GymCommunityView({ gym, onClose }: GymCommunityViewProps) {
             const email = localStorage.getItem("userEmail")
             if (email) {
                 try {
-                    const userRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/users/email/${email}`)
+                    const userRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/users/email/${email}`)
                     if (userRes.ok) {
                         const userData = await userRes.json()
                         const currentGym = userData.homeGym
                         if (!currentGym || currentGym === "None" || currentGym === "N/A") {
-                            await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/users/login-or-register`, {
+                            await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/users/login-or-register`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({
@@ -122,7 +122,7 @@ export function GymCommunityView({ gym, onClose }: GymCommunityViewProps) {
     const handleExit = async () => {
         if (!currentUserId) return
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/gyms/${gym.id}/members/${currentUserId}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/gyms/${gym.id}/members/${currentUserId}`, {
                 method: 'DELETE',
             })
             
@@ -131,10 +131,10 @@ export function GymCommunityView({ gym, onClose }: GymCommunityViewProps) {
             // Update User's Home Gym to N/A
             const email = localStorage.getItem("userEmail")
             if (email) {
-                const userRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/users/email/${email}`)
+                const userRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/users/email/${email}`)
                 if (userRes.ok) {
                     const userData = await userRes.json()
-                    await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/users/login-or-register`, {
+                    await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/users/login-or-register`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -249,7 +249,7 @@ export function GymCommunityView({ gym, onClose }: GymCommunityViewProps) {
                                             setLoadingUser(true)
                                             setShowComingSoon(false)
                                             try {
-                                                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/users/${member.userId}`)
+                                                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/users/${member.userId}`)
                                                 if (res.ok) {
                                                     const data = await res.json()
                                                     setViewingUser(data)

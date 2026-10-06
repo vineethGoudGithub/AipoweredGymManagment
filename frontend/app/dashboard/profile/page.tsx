@@ -55,7 +55,7 @@ export default function ProfilePage() {
       const email = localStorage.getItem("userEmail")
       if (email) {
         try {
-          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/users/email/${email}`)
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/users/email/${email}`)
           if (res.ok) {
             const data = await res.json()
             setUserData((prev: any) => ({ ...prev, ...data }))
@@ -80,7 +80,7 @@ export default function ProfilePage() {
         email,
         ...editData
       }
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/users/login-or-register`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/users/login-or-register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

@@ -196,7 +196,7 @@ export default function TravelModeMap({ initialView = "summary", onBack, onOpenM
   useEffect(() => {
     const fetchGyms = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/gyms`)
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/gyms`)
         if (!res.ok) throw new Error("Failed to fetch gyms")
         const data = await res.json()
         if (Array.isArray(data) && data.length) {

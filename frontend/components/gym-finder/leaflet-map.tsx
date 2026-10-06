@@ -97,7 +97,7 @@ export default function LeafletMap() {
     const fetchGyms = async () => {
         setIsSyncing(true)
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/gyms`)
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/gyms`)
             if (!response.ok) throw new Error('Failed to fetch gyms')
             const data = await response.json()
             
@@ -134,7 +134,7 @@ export default function LeafletMap() {
         setSearching(true)
         try {
             // First check if it matches any gyms in our DB
-            const dbRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/gyms?search=${encodeURIComponent(searchQuery)}`)
+            const dbRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/gyms?search=${encodeURIComponent(searchQuery)}`)
             if (dbRes.ok) {
                 const data = await dbRes.json()
                 if (data && data.length > 0) {

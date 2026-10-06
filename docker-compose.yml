@@ -29,7 +29,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_API_URL=http://localhost:8080
+      - NEXT_PUBLIC_API_URL=https://aipoweredgymmanagment.onrender.com
       - PORT=3000
     depends_on:
       - gym-backend

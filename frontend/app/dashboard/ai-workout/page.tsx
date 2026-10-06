@@ -105,7 +105,7 @@ export default function AiWorkoutPage() {
     setSaved(false)
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://aipoweredgymmanagment.onrender.com"
       const res = await fetch(`${apiUrl}/api/ai/generate-workout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

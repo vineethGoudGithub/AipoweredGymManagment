@@ -58,7 +58,7 @@ export default function DashboardPage() {
     setStreak((prev) => prev + 1)
     try {
       const email = localStorage.getItem("userEmail") || "vineethgoudvgs789@gmail.com"
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/attendance/check-in`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/attendance/check-in`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

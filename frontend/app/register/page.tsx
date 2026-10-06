@@ -57,7 +57,7 @@ export default function RegisterPage() {
       }
       setSearching(true)
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/gyms?search=${encodeURIComponent(gymSearch)}`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/gyms?search=${encodeURIComponent(gymSearch)}`)
         if (!response.ok) throw new Error('Search failed')
         const data = await response.json()
         setSearchResults(data)
@@ -105,7 +105,7 @@ export default function RegisterPage() {
 
       // If it's a new gym, add it via Spring Boot
       if (formData.isNewGym && formData.gymName && formData.gymLat && formData.gymLng) {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/gyms`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/gyms`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -125,7 +125,7 @@ export default function RegisterPage() {
       }
 
       // Log user in to Database so they appear in Supabase users table
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/users/login-or-register`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/users/login-or-register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -145,7 +145,7 @@ export default function RegisterPage() {
 
       // Add user to the selected gym community
       if (finalGymId) {
-        await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/gyms/${finalGymId}/members`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/gyms/${finalGymId}/members`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

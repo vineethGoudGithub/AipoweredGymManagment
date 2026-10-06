@@ -38,7 +38,7 @@ export default function LoginPage() {
     setTimeout(async () => {
       // Log user in to Database so they update their lastLogin in Supabase users table
       try {
-        await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/users/login-or-register`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/users/login-or-register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: formData.email })

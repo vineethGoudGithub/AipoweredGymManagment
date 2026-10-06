@@ -58,7 +58,7 @@ export default function ExercisesPage() {
   useEffect(() => {
     async function fetchExercises() {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/exercises`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'}/api/exercises`)
         if (!response.ok) throw new Error('Failed to fetch exercises')
         const data = await response.json()
         setDbExercises(data)

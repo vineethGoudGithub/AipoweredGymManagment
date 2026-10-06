@@ -82,7 +82,7 @@ export default function ChatPage() {
     setLoading(true)
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://aipoweredgymmanagment.onrender.com'
       const response = await fetch(`${apiUrl}/api/ai/coach`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
