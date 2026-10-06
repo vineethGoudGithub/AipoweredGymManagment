@@ -1,0 +1,41 @@
+services:
+  # Spring Boot Java 21 Backend
+  gym-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: apexfit-ai-backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_APPLICATION_NAME=ai-gym-backend
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sound-b5l933b4-pooler.c-7.us-east-2.aws.neon.tech:5432/neondb?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=neondb_owner
+      - SPRING_DATASOURCE_PASSWORD=npg_0sL8AGfPIWyF
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - PORT=8080
+    networks:
+      - gym-network
+
+  # Next.js TypeScript Frontend
+  gym-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: apexfit-ai-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:8080
+      - PORT=3000
+    depends_on:
+      - gym-backend
+    networks:
+      - gym-network
+
+networks:
+  gym-network:
+    driver: bridge

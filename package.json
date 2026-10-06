@@ -1,0 +1,32 @@
+{
+  "name": "ai-powered-gym-management-system",
+  "version": "1.0.0",
+  "description": "AI-Powered Gym Management System with Neon PostgreSQL, Smart Matching, AI Workout & Diet Planner, and Docker Containerization",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vineethGoudGithub/AipoweredGymManagment.git"
+  },
+  "keywords": [
+    "gym-management",
+    "ai-fitness",
+    "spring-boot",
+    "nextjs",
+    "postgresql",
+    "neon",
+    "docker"
+  ],
+  "author": "Vineeth Goud <vineethgoudvgs789@gmail.com>",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/vineethGoudGithub/AipoweredGymManagment/issues"
+  },
+  "homepage": "https://github.com/vineethGoudGithub/AipoweredGymManagment#readme",
+  "dependencies": {
+    "puppeteer": "^24.39.1"
+  }
+}
