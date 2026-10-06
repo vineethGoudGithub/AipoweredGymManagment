@@ -142,6 +142,29 @@ The frontend starts on `http://localhost:3000`.
 - `GET /api/users/email/{email}` — Find user by email
 - `POST /api/users/login-or-register` — Authenticate / register athlete profile
 
+### Health & Diagnostics
+- `GET /api/health` — Retrieve system health & Neon PostgreSQL live connectivity status
+- `GET /api/keep-alive` — Wake up serverless connection pool
+
+```bash
+# Verify system health
+curl http://localhost:8080/api/health
+```
+
+---
+
+## Neon PostgreSQL Troubleshooting & FAQ
+
+### 1. SSL Handshake in Containers
+The Neon connection string requires `sslmode=require`. Ensure your environment has standard root CA certificates installed (included by default in the Alpine Temurin base image).
+
+### 2. PgBouncer Session Connection
+The provided JDBC URL targets port `5432` with pooled connections:
+```
+jdbc:postgresql://ep-cool-sound-b5l933b4-pooler.c-7.us-east-2.aws.neon.tech:5432/neondb?sslmode=require
+```
+HikariCP is configured with a 30s keepalive query (`SELECT 1`) to keep the serverless database warm during idle periods.
+
 ---
 
 ## Author & Maintainer
